@@ -1,0 +1,78 @@
+package helloworld.Controller;
+import helloworld.Module.Communication;
+import helloworld.Module.LoginMoudle;
+import helloworld.Share.Common;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+
+import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginFormController implements Initializable{
+    @FXML private String Address = "127.0.0.1";
+    @FXML private int Port = 19001;
+    @FXML private Text actiontarget;
+    @FXML private TextField useridtext;
+    @FXML private PasswordField passwordtext;
+
+    @FXML protected void handleSubmitButtonAction(ActionEvent event) {
+        if(useridtext.getText().isEmpty()) {
+            System.out.println("用户名不能为空");
+            //actiontarget.setText("用户名不能为空");
+        }else if(passwordtext.getText().isEmpty()){
+
+            System.out.println("密码不能为空");
+            //actiontarget.setText("密码不能为空");
+        }else {
+            try {
+                String user = useridtext.getText().trim();
+                String password = passwordtext.getText().trim();
+                Common.currentcommunication = new Communication(new Socket(Address, Port));
+                LoginMoudle lm = new LoginMoudle();
+                if(Common.currentcommunication.IncreaseMoudle(lm)){
+                    System.out.println("模块加载成功");
+                    Common.currentcommunication.start();
+                    ((LoginMoudle) Common.currentcommunication.GetMoudle(Common.LOGINMOUDLE)).Login(user, password);
+                }else{
+                    System.out.println("模块加载失败");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                //actiontarget.setText("无法连接至服务器，请检查网络设备");
+                //链接服务器失败，请检查网络设施
+            }
+        }
+    }
+
+    @FXML protected void closeButtonAction(ActionEvent event){
+        Common.main.Close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Common.loginFormController = this;
+    }//初始化
+
+
+    public void Loginpass(){
+        actiontarget.setText("登录成功");
+    }//登录成功
+
+    public void Loginerror(){
+        actiontarget.setText("账号不存在");
+    }//账号不存在
+
+    public void Loginfail(){
+        actiontarget.setText("密码错误");
+    }//密码错误
+
+
+
+}

@@ -1,0 +1,94 @@
+.root{
+    -fx-background-color: rgba(0,0,0,1);
+    -fx-pref-width: 400px;
+    -fx-pref-height: 600px;
+}
+.button{
+    -fx-background-color: rgba(255,255,255,0);
+    -fx-background-radius: 0px;
+}
+.button:hover{
+    -fx-background-color: rgba(255,255,255,0.3);
+}
+.button:pressed{
+    -fx-background-color: rgba(255,255,255,0.2);
+}
+.label{
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+#Nickname{
+    -fx-font-size: 16px;
+}
+#Introduction{
+    -fx-font-size: 13px;
+}
+#Avatar{
+    -fx-image: url("../Image/Avatar1.png");
+}
+#AvatarButton{
+    -fx-pref-width: 80px;
+    -fx-pref-height: 80px;
+    -fx-background-color: rgba(255,255,255,0);
+    -fx-background-radius: 10px;
+}
+#AvatarButton:hover{
+    -fx-background-color: rgba(255,255,255,0.6);
+}
+#AvatarButton:pressed{
+    -fx-background-color: rgba(255,255,255,0.3);
+}
+#CloseButton{
+    -fx-background-image: url("../Image/CloseButton-light.png");
+    -fx-background-size: 25px;
+    -fx-background-position: center;
+}
+#MinButton{
+    -fx-background-image: url("../Image/MinButton-light.png");
+    -fx-background-size: 25px;
+    -fx-background-position: center;
+}
+#MessageText{
+    -fx-border-color: black;
+    -fx-border-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 2px 10px 2px 10px;
+    -fx-background-radius: 15px;
+
+}
+#InputButton{
+    -fx-background-color: black;
+    -fx-background-radius: 16px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 16px;
+    -fx-padding: 0px;
+    -fx-text-fill: white;
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+#InputButton:hover{
+    -fx-background-color: lightgray;
+}
+#InputButton:pressed{
+    -fx-background-color: gray;
+}
+
+.scroll-pane > .viewport  {
+    -fx-background-color: rgba(255,255,255,0.1);
+}
+.scroll-pane .scroll-bar:vertical{
+    -fx-background-color: transparent;
+}
+.scroll-pane .increment-button ,.scroll-pane .decrement-button{
+    -fx-background-color: transparent;
+}
+.scroll-pane{
+    -fx-background-color: rgba(255,255,255,0);
+    -fx-border-color: transparent;
+}

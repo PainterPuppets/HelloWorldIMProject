@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="helloworld.Controller.ChatFormController">
+    <HBox alignment="TOP_RIGHT" prefHeight="30.0" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0">
+          <Button fx:id="MinButton" prefHeight="30" prefWidth="30" />
+          <Button fx:id="CloseButton" prefHeight="30" prefWidth="30" />
+    </HBox>
+    <AnchorPane fx:id="InfoAnchorPane" AnchorPane.leftAnchor="5" AnchorPane.rightAnchor="5" AnchorPane.topAnchor="30">
+        <ImageView fx:id="Avatar" fitWidth="80" fitHeight="80" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="10" />
+        <Button fx:id="AvatarButton" onAction="#AvatarButtonAction" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="20" styleClass="rounded-label"/>
+        <Label fx:id="Nickname" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="15" AnchorPane.rightAnchor="20" text="Painter"/>
+        <Label fx:id="Introduction" AnchorPane.leftAnchor="120" AnchorPane.bottomAnchor="15" AnchorPane.rightAnchor="20" text="Build myself dream"/>
+    </AnchorPane>
+    <ScrollPane fx:id="ChatScrollPane" AnchorPane.leftAnchor="5" AnchorPane.topAnchor="140" AnchorPane.rightAnchor="5" AnchorPane.bottomAnchor="130"
+                fitToWidth="true" fitToHeight="true">
+        <VBox fx:id="Chatbox">
+
+        </VBox>
+    </ScrollPane>
+    <AnchorPane fx:id="InputAnchorPane" prefHeight="130" AnchorPane.bottomAnchor="5" AnchorPane.leftAnchor="5" AnchorPane.rightAnchor="5">
+        <TextField fx:id="MessageText" promptText="请输入你想说的话" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="100" AnchorPane.leftAnchor="100" styleClass="rounded-label"/>
+        <Button fx:id="InputButton" text="Press" styleClass="rounded-label" onAction="#InputButtonAction" AnchorPane.topAnchor="80" AnchorPane.rightAnchor="130" AnchorPane.leftAnchor="130"/>
+    </AnchorPane>
+    <stylesheets>
+        <URL value="@../CSS/ChatForm-Dark.css" />
+    </stylesheets>
+</AnchorPane>

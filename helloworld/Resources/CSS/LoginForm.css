@@ -1,0 +1,47 @@
+.root{
+    -fx-pref-width: 450px;
+    -fx-pref-height: 700px;
+    -fx-background-color: rgba(0,0,0,1);
+}
+#Loginpic{
+    -fx-alignment: center;
+    -fx-image: url("../Image/Loginpic.png");
+}
+
+#userlabel ,#passwordlabel{
+    -fx-alignment: center-left;
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-pref-width: 90px;
+}
+#useridtext, #passwordtext{
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-size: 12px;
+    -fx-pref-width: 170px;
+    -fx-border-color: black;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-padding: 2px 9px 2px 9px;
+
+}
+
+#LogButton, #CloseButton{
+    -fx-background-color: black;
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-size: 15px;
+    -fx-padding: 0px;
+    -fx-text-fill: white;
+    -fx-pref-width: 200px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+}
+#LogButton:hover, #CloseButton:hover{
+    -fx-background-color: rgba(153, 153, 153,1);
+}
+#LogButton:pressed, #CloseButton:pressed{
+    -fx-background-color: rgba(153, 153, 153,0.5);
+}
