@@ -15,7 +15,7 @@
             fx:controller="helloworld.Controller.MainFormController">
     <HBox alignment="TOP_RIGHT" prefHeight="30.0" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0">
           <Button fx:id="MinButton" prefHeight="30" prefWidth="30" />
-          <Button fx:id="CloseButton" prefHeight="30" prefWidth="30" />
+          <Button fx:id="CloseButton" prefHeight="30" prefWidth="30" onAction="#closeButtonAction"/>
     </HBox>
     <AnchorPane fx:id="InfoPane" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="0" prefHeight="100">
         <ImageView fx:id="Avatar" fitWidth="80" fitHeight="80" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="10" />
@@ -24,7 +24,7 @@
         <Label fx:id="Introduction" AnchorPane.leftAnchor="120" AnchorPane.bottomAnchor="15" AnchorPane.rightAnchor="20" text="Build myself dream"/>
     </AnchorPane>
     <AnchorPane AnchorPane.rightAnchor="5" AnchorPane.leftAnchor="5" AnchorPane.topAnchor="140" >
-        <TextField fx:id="SearchText" promptText="                    输入你要查询的id号" styleClass="rounded-label" AnchorPane.topAnchor="5" AnchorPane.leftAnchor="15" />
+        <TextField fx:id="SearchText" promptText="                    请输入要查询的id号" styleClass="rounded-label" AnchorPane.topAnchor="5" AnchorPane.leftAnchor="15" />
     </AnchorPane>
     <ScrollPane fx:id="Friendscroll" AnchorPane.leftAnchor="5" AnchorPane.topAnchor="190" AnchorPane.rightAnchor="5" AnchorPane.bottomAnchor="5" fitToWidth="true" >
         <AnchorPane fx:id="Friendpane" prefWidth="300" >

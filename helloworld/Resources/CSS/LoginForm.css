@@ -27,6 +27,16 @@
 
 }
 
+#actiontarget{
+    -fx-alignment: center;
+    -fx-font-family: "Noto Sans CJK JP Black";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: coral;
+    -fx-pref-width: 260px;
+
+}
+
 #LogButton, #CloseButton{
     -fx-background-color: black;
     -fx-font-family: "Noto Sans CJK JP Black";

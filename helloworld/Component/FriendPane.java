@@ -1,4 +1,7 @@
 package helloworld.Component;
+import helloworld.DataType.UserInfo;
+import helloworld.Share.Common;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -14,6 +17,8 @@ public class FriendPane extends AnchorPane {
     Label nickname = new Label();
     Label introduction = new Label();
     Button btn = new Button();
+
+    public UserInfo userInfo;
 
     private int FriendID;
 
@@ -43,9 +48,10 @@ public class FriendPane extends AnchorPane {
         });
     }
 
-    public FriendPane(int id,String n_nickname,String n_introduction){
+    public FriendPane(int id,int Avatar,String n_nickname,String n_introduction){
         this.FriendID = id;
-        this.avatar.setImage(new Image("helloworld/Resources/Image/Avatar1.png"));
+        userInfo = new UserInfo(id,Avatar,n_nickname,n_introduction);
+        this.avatar.setImage(new Image(Common.GetAvatarPath(Avatar)));
         this.avatar.setFitHeight(50.0);
         this.avatar.setFitWidth(50.0);
 
@@ -58,6 +64,9 @@ public class FriendPane extends AnchorPane {
 
         this.introduction.setText(n_introduction);
 
+        this.btn.setOnAction((ActionEvent event) -> {
+            Common.mainFormController.OpenChatWindow(FriendID);
+        });
 
         this.getChildren().add(this.avatar);
         this.getChildren().add(this.nickname);

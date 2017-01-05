@@ -2,8 +2,10 @@ package helloworld.Share;
 
 import helloworld.Controller.LoginFormController;
 import helloworld.Controller.MainFormController;
-import helloworld.Form.Main;
+import helloworld.Form.LoginForm;
+import helloworld.Form.MainForm;
 import helloworld.Module.Communication;
+import sun.applet.Main;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -22,7 +24,8 @@ public class Common {
 
 
 
-    public static Main main = null;
+    public static LoginForm loginform = null;
+    public static MainForm mainform =null;
     //Controller
     public static Hashtable ChatFormTable;
     public static LoginFormController loginFormController = null;
@@ -35,6 +38,23 @@ public class Common {
     public static int MESSAGEMOUDLE = 2;
     public static int LOGINMOUDLE = 3;
     public static int LOGOUTMOUDLE = 4;
+    public static int LOADMOUDLE = 5;
+
+    //获取头像地址
+    public static String GetAvatarPath(int avatarid){
+        switch (avatarid){
+            case 1:
+                return "helloworld/Resources/Image/Avatar1.png";
+            case 2:
+                return "helloworld/Resources/Image/Avatar2.png";
+            case 3:
+                return "helloworld/Resources/Image/Avatar3.png";
+            case 4:
+                return "helloworld/Resources/Image/Avatar4.png";
+            default:
+                return "helloworld/Resources/Image/Avatar1.png";
+        }
+    }
 
 
 

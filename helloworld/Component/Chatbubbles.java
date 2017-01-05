@@ -1,5 +1,7 @@
 package helloworld.Component;
 
+import helloworld.DataType.UserInfo;
+import helloworld.Share.Common;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,11 +15,14 @@ public class Chatbubbles extends AnchorPane {
     ImageView Avatar = new ImageView();
     Label Nickname = new Label();
     Label Messagetext= new Label();
-    public Chatbubbles(String message){
+
+    public UserInfo userInfo;
+    public Chatbubbles(String message,UserInfo userInfo){
+        this.userInfo= userInfo;
         this.setStyle(
                 "-fx-pref-width: 200px;"
         );
-        this.Avatar.setImage(new Image("helloworld/Resources/Image/Avatar1.png"));
+        this.Avatar.setImage(new Image(Common.GetAvatarPath(userInfo.avatar)));
         this.Avatar.setFitHeight(50.0);
         this.Avatar.setFitWidth(50.0);
         this.Avatar.setStyle(
@@ -25,7 +30,7 @@ public class Chatbubbles extends AnchorPane {
                 "-fx-border-color: white;"
         );
 
-        this.Nickname.setText("Test");
+        this.Nickname.setText(userInfo.nickname);
         this.Nickname.setWrapText(true);
         this.Nickname.setMaxWidth(50);
         this.Nickname.setMinWidth(50);

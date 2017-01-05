@@ -1,5 +1,7 @@
 package helloworld.Module;
 
+import helloworld.DataType.Loadgram;
+import helloworld.DataType.UserInfo;
 import helloworld.Share.Common;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by painter on 17-1-2.
  */
 public class LoadMoudle implements SuperMoudle{
-    int Port = 1;
+    int Port = Common.LOADMOUDLE;
     Communication communication;
 
     public LoadMoudle(){
@@ -18,21 +20,19 @@ public class LoadMoudle implements SuperMoudle{
 
     @Override
     public void Receive(String Msg) {
-        System.out.println("login模块处理信息中");
+        Loadgram loadgram = (Loadgram) Common.GetObject(Msg,Loadgram.class);
+        if(loadgram != null){
+            Common.mainFormController.IncreaseFriend(loadgram.info);
+        }
+    }
+
+    public void FirstLoad(){
+        Loadgram loadgram = new Loadgram(1);
+        communication.SendDatagram(this.Port,Common.GetXml(loadgram));
     }
 
     @Override
     public int GetPort() {
         return Port;
-    }
-
-    @XmlRootElement
-    class Logingram{
-        String Userid;
-        String Password;
-
-        public Logingram(){
-            super();
-        }
     }
 }

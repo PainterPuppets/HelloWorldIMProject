@@ -15,8 +15,6 @@ public class InfoFormController implements Initializable{
     @FXML protected TextField MessageText;
 
     @FXML protected void InputButtonAction(){
-        IncreaseChat(new Chatbubbles(MessageText.getText()));
-        MessageText.setText("");
     }
 
 

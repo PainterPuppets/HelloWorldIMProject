@@ -24,9 +24,6 @@
 #Introduction{
     -fx-font-size: 13px;
 }
-#Avatar{
-    -fx-image: url("../Image/Avatar1.png");
-}
 #AvatarButton{
     -fx-pref-width: 80px;
     -fx-pref-height: 80px;

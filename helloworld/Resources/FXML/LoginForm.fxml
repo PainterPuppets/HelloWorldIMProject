@@ -10,23 +10,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="mainpane" styleClass="root" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane fx:id="mainpane" styleClass="root" onKeyPressed="#KeyPressAction"
+            xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="helloworld.Controller.LoginFormController">
     <VBox AnchorPane.topAnchor="20" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" alignment="CENTER">
         <ImageView fx:id="Loginpic" fitWidth="400" fitHeight="400"/>
     </VBox>
     <HBox AnchorPane.topAnchor="430" AnchorPane.rightAnchor="10" AnchorPane.leftAnchor="10" alignment="CENTER">
         <Label fx:id="userlabel" text="Userid:"/>
-        <TextField fx:id="useridtext" styleClass="rounded-label"/>
+        <TextField fx:id="useridtext" styleClass="rounded-label" onKeyPressed="#KeyPressAction"/>
     </HBox>
     <HBox AnchorPane.topAnchor="480" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" alignment="CENTER">
         <Label fx:id="passwordlabel" text="Password:"/>
-        <PasswordField fx:id="passwordtext" styleClass="rounded-label"/>
+        <PasswordField fx:id="passwordtext" styleClass="rounded-label" onKeyPressed="#KeyPressAction"/>
     </HBox>
-    <VBox AnchorPane.topAnchor="550" AnchorPane.rightAnchor="10" AnchorPane.leftAnchor="10" alignment="CENTER">
+    <VBox AnchorPane.topAnchor="520" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" alignment="CENTER">
+        <Label fx:id="actiontarget" />
+    </VBox>
+    <VBox AnchorPane.topAnchor="560" AnchorPane.rightAnchor="10" AnchorPane.leftAnchor="10" alignment="CENTER">
         <Button fx:id="LogButton" onAction="#handleSubmitButtonAction" text="Login" styleClass="rounded-label"/>
     </VBox>
-    <VBox AnchorPane.topAnchor="600" AnchorPane.rightAnchor="10" AnchorPane.leftAnchor="10" alignment="CENTER">
+    <VBox AnchorPane.topAnchor="610" AnchorPane.rightAnchor="10" AnchorPane.leftAnchor="10" alignment="CENTER">
         <Button fx:id="CloseButton" onAction="#closeButtonAction" text="Exit" styleClass="rounded-label"/>
     </VBox>
     <stylesheets>

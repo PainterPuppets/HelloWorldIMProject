@@ -13,10 +13,10 @@
 <?import javafx.scene.control.TextField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="helloworld.Controller.ChatFormController">
+            fx:controller="helloworld.Controller.ChatFormController" onKeyPressed="#KeyPressAction">
     <HBox alignment="TOP_RIGHT" prefHeight="30.0" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0">
           <Button fx:id="MinButton" prefHeight="30" prefWidth="30" />
-          <Button fx:id="CloseButton" prefHeight="30" prefWidth="30" />
+          <Button fx:id="CloseButton" prefHeight="30" prefWidth="30" onAction="#CloseButtonAction"/>
     </HBox>
     <AnchorPane fx:id="InfoAnchorPane" AnchorPane.leftAnchor="5" AnchorPane.rightAnchor="5" AnchorPane.topAnchor="30">
         <ImageView fx:id="Avatar" fitWidth="80" fitHeight="80" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="10" />
@@ -31,7 +31,7 @@
         </VBox>
     </ScrollPane>
     <AnchorPane fx:id="InputAnchorPane" prefHeight="130" AnchorPane.bottomAnchor="5" AnchorPane.leftAnchor="5" AnchorPane.rightAnchor="5">
-        <TextField fx:id="MessageText" promptText="请输入你想说的话" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="100" AnchorPane.leftAnchor="100" styleClass="rounded-label"/>
+        <TextField fx:id="MessageText" promptText="请输入你想说的话" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="100" AnchorPane.leftAnchor="100" styleClass="rounded-label" onKeyPressed="#KeyPressAction"/>
         <Button fx:id="InputButton" text="Press" styleClass="rounded-label" onAction="#InputButtonAction" AnchorPane.topAnchor="80" AnchorPane.rightAnchor="130" AnchorPane.leftAnchor="130"/>
     </AnchorPane>
     <stylesheets>

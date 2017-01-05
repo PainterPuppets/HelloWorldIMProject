@@ -1,9 +1,9 @@
 package helloworld.Module;
 
 import helloworld.DataType.Datagram;
+import helloworld.DataType.UserInfo;
 import helloworld.Share.Common;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.*;
 import java.net.Socket;
 import java.util.Hashtable;
@@ -14,6 +14,7 @@ import java.util.Hashtable;
 public class Communication extends Thread{
     private Socket TcpSocket;//链接的Socket
     private boolean LinkFlag = false;//连接状态
+    public UserInfo currentuser = null;//当前登录用户
     private BufferedWriter Writer;//用于传输数据
     private BufferedReader Reader;//用于接收数据
     public IOMoudle Io = new IOMoudle();//用于处理IO问题
@@ -27,7 +28,8 @@ public class Communication extends Thread{
             String recstr;
             while (LinkFlag && (recstr = Reader.readLine())!= null) {
                 System.out.println("接收到服务器的消息:"+recstr);
-                Distribution(recstr);
+                Excute excute = new Excute(recstr);
+                excute.start();
             }
         }catch (Exception e){}
     }//循环监听信息
@@ -92,7 +94,9 @@ public class Communication extends Thread{
             this.Reader.close();
             this.Writer.close();
             this.TcpSocket.close();
-        }catch (IOException ioe){}
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }//关闭链接
 
     class IOMoudle implements SuperMoudle{
@@ -106,6 +110,20 @@ public class Communication extends Thread{
 
         }
         
+    }
+
+    class Excute extends Thread{
+
+        String msgstr;
+
+        @Override
+        public void run(){
+            Distribution(msgstr);
+        }//循环监听信息
+
+        public Excute(String MsgStr){
+            this.msgstr = MsgStr;
+        }
     }
 
     /*

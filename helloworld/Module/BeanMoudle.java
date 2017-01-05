@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by painter on 17-1-2.
  */
 public class BeanMoudle implements SuperMoudle{
-    int Port = 1;
+    int Port = Common.BEANNMOUDLE;
     Communication communication;
 
     public BeanMoudle(){
@@ -24,15 +24,5 @@ public class BeanMoudle implements SuperMoudle{
     @Override
     public int GetPort() {
         return Port;
-    }
-
-    @XmlRootElement
-    class Logingram{
-        String Userid;
-        String Password;
-
-        public Logingram(){
-            super();
-        }
     }
 }

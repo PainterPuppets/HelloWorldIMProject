@@ -31,6 +31,7 @@ public class LoginMoudle implements SuperMoudle{
                     Common.loginFormController.Loginerror();
                     break;
                 case 1://登录成功
+                    Common.currentcommunication.currentuser = rlc.userInfo;
                     Common.loginFormController.Loginpass();
                     break;
                 case 2://密码错误

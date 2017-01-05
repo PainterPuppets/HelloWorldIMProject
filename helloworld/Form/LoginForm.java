@@ -2,6 +2,7 @@ package helloworld.Form;
 import helloworld.Share.Common;
 import helloworld.Component.Move;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,13 +10,13 @@ import javafx.stage.Stage;
 
 import javafx.stage.StageStyle;
 
-public class Main extends Application {
+public class LoginForm extends Application {
 
-    Stage n_stage;
+    public Stage n_stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Common.main = this;
+        Common.loginform = this;
         n_stage = primaryStage;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         Parent root = FXMLLoader.load(getClass().getResource("../Resources/FXML/LoginForm.fxml"));
@@ -24,21 +25,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(scene);
-        primaryStage.show();
-
-        /*
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                if (Common.currentcommuniation != null) {
-                    if (Common.currentcommuniation.OnLine) {
-                        Common.currentcommuniation.SendlogoutMsg();
-                    } else {
-                        Common.currentcommuniation.logout();
-                    }
-                }
-            }
-        });*/
+        n_stage.show();
     }
 
     public static void main(String[] args) {

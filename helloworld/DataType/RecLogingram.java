@@ -8,16 +8,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class RecLogingram{
     public int type;
-    public int Uid;
-    public String Nickname;
-    public String Introduction;
+    public UserInfo userInfo;
 
     public RecLogingram(){
         super();
     }
-    public RecLogingram(int type,int uid,String nickname,String introduction){
-        this.Uid = uid;
-        this.Nickname = nickname;
-        this.Introduction = introduction;
+
+    public RecLogingram(int type,UserInfo userInfo){
+        this.type = type;
+        this.userInfo = userInfo;
     }
 }
