@@ -34,7 +34,7 @@ public class FriendPane extends AnchorPane {
         this.avatar.setLayoutY(5);
 
         this.nickname.setText(n_nickname);
-        this.nickname.setFont(new Font("Ubuntu Light",15.0));
+        this.nickname.setFont(new Font("Noto Sans CJK JP Black",15.0));
         this.nickname.prefWidth(25);
         this.nickname.prefHeight(100);
         this.nickname.setLayoutX(60.0);

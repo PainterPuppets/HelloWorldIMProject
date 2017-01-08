@@ -49,8 +49,8 @@ public class LoginFormController implements Initializable{
                     System.out.println("模块加载失败");
                 }
             } catch (Exception e) {
-                e.printStackTrace();
-                //actiontarget.setText("无法连接至服务器，请检查网络设备");
+                //e.printStackTrace();
+                actiontarget.setText("无法连接至服务器，请检查网络设备");
                 //链接服务器失败，请检查网络设施
             }
         }

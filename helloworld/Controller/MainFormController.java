@@ -1,10 +1,14 @@
 package helloworld.Controller;
 import helloworld.DataType.UserInfo;
 import helloworld.Form.ChatForm;
+import helloworld.Form.LoginForm;
 import helloworld.Form.MainForm;
+import helloworld.Module.BeanMoudle;
 import helloworld.Module.LoadMoudle;
+import helloworld.Module.LogoutMoudle;
 import helloworld.Share.Common;
 import helloworld.Component.FriendPane;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -18,9 +22,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.text.html.parser.Entity;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable{
@@ -49,11 +55,13 @@ public class MainFormController implements Initializable{
     }//初始化
 
 
-    @FXML protected void closeButtonAction(Event event){
-        Common.mainform.Close();
-        Common.currentcommunication.Close();
-    }
-
+    @FXML protected void closeButtonAction(){
+        ((LogoutMoudle)Common.currentcommunication.GetMoudle(Common.LOGOUTMOUDLE)).Logout();
+        try {
+            Thread.sleep(100);
+        }catch (Exception e){ e.printStackTrace(); }
+        System.exit(0);
+    }//点击关闭按钮
 
     public void IncreaseFriend(UserInfo userInfo){
         if(!Friendtable.containsKey(userInfo.uid)) {
@@ -64,7 +72,6 @@ public class MainFormController implements Initializable{
                 @Override
                 public void run() {
                     Friendpane.getChildren().add(fp);
-                    System.out.println("正在添加"+userInfo.uid+"好友栏");
                     Friendpane.setLeftAnchor(fp,10.0);
                     Friendpane.setRightAnchor(fp,10.0);
                     Friendpane.setTopAnchor(fp,anchor*60.0);
@@ -77,7 +84,8 @@ public class MainFormController implements Initializable{
 
     public void LoadingNewMoudle(){
         Common.currentcommunication.IncreaseMoudle(new LoadMoudle(Common.currentcommunication));
-
+        Common.currentcommunication.IncreaseMoudle(new BeanMoudle(Common.currentcommunication));
+        Common.currentcommunication.IncreaseMoudle(new LogoutMoudle(Common.currentcommunication));
 
         Common.currentcommunication.DeleteMoudle(Common.LOGINMOUDLE);
     }//加载新组件
@@ -99,6 +107,21 @@ public class MainFormController implements Initializable{
             ((ChatFormController)Chattable.get(uid)).OpenWindow();
         }
     }//点击好友事件
+
+    public void Logout(){
+        Common.currentcommunication.LinkFlag = false;
+        System.out.println("您已离线");
+        System.exit(0);
+        /*Platform.runLater(() -> {
+            try {
+                new LoginForm().start(new Stage());
+                closeButtonAction();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+        */
+    }//离线
 
 
 }

@@ -13,7 +13,7 @@ import java.util.Hashtable;
  */
 public class Communication extends Thread{
     private Socket TcpSocket;//链接的Socket
-    private boolean LinkFlag = false;//连接状态
+    public boolean LinkFlag = false;//连接状态
     public UserInfo currentuser = null;//当前登录用户
     private BufferedWriter Writer;//用于传输数据
     private BufferedReader Reader;//用于接收数据
@@ -28,8 +28,7 @@ public class Communication extends Thread{
             String recstr;
             while (LinkFlag && (recstr = Reader.readLine())!= null) {
                 System.out.println("接收到服务器的消息:"+recstr);
-                Excute excute = new Excute(recstr);
-                excute.start();
+                new Excute(recstr).start();
             }
         }catch (Exception e){}
     }//循环监听信息
@@ -89,10 +88,9 @@ public class Communication extends Thread{
     }//获取指定端口的组件
 
     public void Close(){
+        System.out.println("communication关闭中");
         this.LinkFlag = false;
         try {
-            this.Reader.close();
-            this.Writer.close();
             this.TcpSocket.close();
         }catch (IOException ioe){
             ioe.printStackTrace();
@@ -176,46 +174,6 @@ public class Communication extends Thread{
         logout();
     }
 
-    //发送数据包
-    public void SendMsg(Message sendmsg){
-        try {
-            String sendstr = sendmsg.GetXmlStr()+'\n';
-            //System.out.println("向服务器发送的数据为:"+sendstr);
-            this.os.write(sendstr.getBytes());
-        }catch (Exception e){
-            //System.out.println("信息错误,请检查代码,可能是网络原因");
-            logout();
-        }
-    }
-
-    private void Reclogin(Message recmsg){
-        switch (recmsg.param){
-            case 0://账号不存在
-                Common.LoginController.Loginerror();
-                break;
-            case 1://登录成功
-                loging(recmsg);
-                break;
-            case 2://密码错误
-                Common.LoginController.Loginfail();
-                break;
-            default:
-                break;
-        }
-    }//接收登录结果
-
-    private void loging(Message recmsg){
-        this.currentuser = hw_user.GetuserfromStr(recmsg.context);
-        Common.LoginController.Loginpass();
-        OnLine = true;
-        bt.start();
-    }//登录成功
-
-    public void Login(String userid,String password){
-        hw_user loginuser = new hw_user(userid,password);
-        Message logmsg = new Message(3,Common.GetXml(loginuser));
-        SendMsg(logmsg);
-    }//发送登录请求
 
 
     public void SendlogoutMsg(){

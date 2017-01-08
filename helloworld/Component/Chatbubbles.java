@@ -17,7 +17,7 @@ public class Chatbubbles extends AnchorPane {
     Label Messagetext= new Label();
 
     public UserInfo userInfo;
-    public Chatbubbles(String message,UserInfo userInfo){
+    public Chatbubbles(String message,UserInfo userInfo,int state){
         this.userInfo= userInfo;
         this.setStyle(
                 "-fx-pref-width: 200px;"
@@ -61,13 +61,21 @@ public class Chatbubbles extends AnchorPane {
         this.getChildren().add(this.Messagetext);
         this.getChildren().add(this.Nickname);
 
-        this.setTopAnchor(this.Avatar,5.0);
-        this.setTopAnchor(this.Nickname,60.0);
-        this.setTopAnchor(this.Messagetext,10.0);
+        this.setTopAnchor(this.Avatar, 5.0);
+        this.setTopAnchor(this.Nickname, 60.0);
+        this.setTopAnchor(this.Messagetext, 10.0);
 
-        this.setLeftAnchor(this.Avatar,10.0);
-        this.setLeftAnchor(this.Nickname,10.0);
-        this.setLeftAnchor(this.Messagetext,70.0);
+        if(state == 1)//别人说话
+        {
+            this.setLeftAnchor(this.Avatar, 10.0);
+            this.setLeftAnchor(this.Nickname, 10.0);
+            this.setLeftAnchor(this.Messagetext, 70.0);
+        }else if(state == 0)//自己说话
+        {
+            this.setRightAnchor(this.Avatar, 10.0);
+            this.setRightAnchor(this.Nickname, 10.0);
+            this.setRightAnchor(this.Messagetext, 70.0);
+        }
 /*
         if(Messagetext.getText().length() > 25){
             this.setRightAnchor(this.Messagetext,40.0);}

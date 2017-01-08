@@ -36,7 +36,7 @@ public class ChatFormController implements Initializable{
     public ChatForm chatForm;
 
     @FXML protected void InputButtonAction(){
-        Chatbubbles chatbubbles=new Chatbubbles(MessageText.getText(),Common.currentcommunication.currentuser);
+        Chatbubbles chatbubbles=new Chatbubbles(MessageText.getText(),Common.currentcommunication.currentuser,0);
         IncreaseChat(chatbubbles);
         MessageText.setText("");
     }
